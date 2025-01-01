@@ -13,7 +13,7 @@ export class ReportsService {
     const budgets = await this.budgetsService.findAll(userId);
     const totalIncome = budgets.reduce((acc, budget) => acc + budget.income, 0);
     const totalExpenses = budgets.reduce(
-      (acc, budget) => acc + budget.expenses.reduce((a, b) => a + b, 0),
+      (acc, budget) => acc + budget.expenses.reduce((a, b) => a + b.amount, 0),
       0,
     );
 
