@@ -19,6 +19,13 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/docs', app, document); // Swagger UI için endpoint
 
+  // CORS'u etkinleştir
+  app.enableCors({
+    origin: 'http://localhost:5173', // Frontend uygulamanızın URL'si
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  });
+
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
